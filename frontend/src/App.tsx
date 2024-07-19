@@ -1,12 +1,16 @@
 import ResumeForm from "./components/ResumeForm";
+import Logo from "./assets/logo-paytour.svg"
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <div className="App">
-       <h1>Formulário de Envio de Currículos</h1>
+      <GlobalStyles />
+       <img src={Logo} alt="Paytour" />
        <ResumeForm />
     </div>
   );
 }
 
 export default App;
+ 
