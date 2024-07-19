@@ -11,4 +11,6 @@ $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
+$app->post('/submit', \App\Controllers\FormController::class . ':submit');
+
 $app->run();
