@@ -1,13 +1,17 @@
+import { ThemeProvider } from "styled-components";
+import { Header } from "./components/Header";
 import ResumeForm from "./components/ResumeForm";
-import Logo from "./assets/logo-paytour.svg"
 import GlobalStyles from "./styles/GlobalStyles";
+import { colors } from "./styles/themes/colors";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyles />
-       <img src={Logo} alt="Paytour" />
-       <ResumeForm />
+      <ThemeProvider theme={colors}>
+        <GlobalStyles />
+        <Header />
+        <ResumeForm />
+      </ThemeProvider>
     </div>
   );
 }
