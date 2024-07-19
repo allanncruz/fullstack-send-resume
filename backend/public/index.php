@@ -1,16 +1,17 @@
 <?php
-
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
-
 require __DIR__ . '/../vendor/autoload.php';
+
+use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
+// Adicione o middleware de roteamento
 $app->addRoutingMiddleware();
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
-$app->post('/submit', \App\Controllers\FormController::class . ':submit');
+// Defina o roteador
+require __DIR__ . '/../src/routes.php';
+
+// Habilite a exibição de erros (apenas para desenvolvimento)
+$app->addErrorMiddleware(true, true, true);
 
 $app->run();
