@@ -1,9 +1,9 @@
 export const colors = {
     title: 'light',
     colors: {
-      primary: '#009ad8',
+      primary: '#9548e4',
       primaryLight: '#bfbfbf',
-      secondary: '#252525',
+      secondary: '#5f5f5f',
   
       white: '#fff',
       black: '#000',

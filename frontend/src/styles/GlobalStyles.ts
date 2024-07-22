@@ -21,11 +21,18 @@ export default createGlobalStyle`
     height: 100%;
   }
 
+  
   a{
     text-decoration: none;
+    color: ${props => props.theme.colors.secondary};
+    
+    &:hover {
+      color: ${props => props.theme.colors.primary};
+    }
   }
 
   p{
+    color: ${props => props.theme.colors.secondary};
     margin-bottom: 10px;
   }
 
