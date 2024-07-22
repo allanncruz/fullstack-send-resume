@@ -8,7 +8,7 @@ export const Container = styled.header`
 `;
 
 export const Title = styled.h1`
-  color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   font-size: 24px;
   text-align: center;
 `

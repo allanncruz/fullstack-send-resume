@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, Form, FormButton, Label, StyledSelect, StyleInput, StyleTextarea } from './style';
+import { Container, Form, FormButton, Label, StyledSelect, StyleInput, StyleTextarea, Title } from './style';
 
 const ResumeForm: React.FC = () => {
+  const [resumeSent, setResumeSent] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +44,7 @@ const ResumeForm: React.FC = () => {
             }
           });
           console.log(response.data);
+          setResumeSent(true)
       } catch (error) {
         console.error(error);
       }
@@ -50,44 +52,79 @@ const ResumeForm: React.FC = () => {
 
     return (
       <Container>
-        <Form onSubmit={handleSubmit}>
-          <Label>
-            Nome:
-            <StyleInput type="text" name="name" value={formData.name} onChange={handleChange} required />
-          </Label>
-          <Label>
-            E-mail:
-            <StyleInput type="email" name="email" value={formData.email} onChange={handleChange} required />
-          </Label>
-          <Label>
-            Telefone:
-            <StyleInput type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
-          </Label>
-          <Label>
-            Cargo Desejado:
-            <StyleInput type="text" name="desiredPosition" value={formData.desiredPosition} onChange={handleChange} required />
-          </Label>
-          <Label>
-            Escolaridade:
-            <StyledSelect name="education" value={formData.education} onChange={handleChange} required>
-              <option value="">Selecione</option>
-              <option value="ensino_medio">Ensino Médio</option>
-              <option value="graduacao">Graduação</option>
-              <option value="pos_graduacao">Pós-Graduação</option>
-              <option value="mestrado">Mestrado</option>
-              <option value="doutorado">Doutorado</option>
-            </StyledSelect>
-          </Label>
-          <Label>
-            Observações:
-            <StyleTextarea name="comments" value={formData.comments} onChange={handleChange} />
-          </Label>
-          <Label>
-            Arquivo:
-            <StyleInput type="file" name="resumeFile" onChange={handleFileChange} />
-          </Label>
-          <FormButton type="submit">Enviar</FormButton>
-        </Form>
+        {!resumeSent ? (
+          <>
+            <Title>Cadastrar currículo</Title>
+            <Form onSubmit={handleSubmit}>
+              <Label>
+                Nome:
+                <StyleInput 
+                  type="text" 
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                  required />
+              </Label>
+              <Label>
+                E-mail:
+                <StyleInput 
+                  type="email" 
+                  name="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  required />
+              </Label>
+              <Label>
+                Telefone:
+                <StyleInput 
+                  type="tel" 
+                  name="phone" 
+                  value={formData.phone} 
+                  onChange={handleChange} 
+                  required />
+              </Label>
+              <Label>
+                Cargo Desejado:
+                <StyleInput 
+                  type="text" 
+                  name="desiredPosition" 
+                  value={formData.desiredPosition} 
+                  onChange={handleChange} 
+                  required />
+              </Label>
+              <Label>
+                Escolaridade:
+                <StyledSelect name="education" value={formData.education} onChange={handleChange} required>
+                  <option value="">Selecione</option>
+                  <option value="ensino_medio">Ensino Médio</option>
+                  <option value="graduacao">Graduação</option>
+                  <option value="pos_graduacao">Pós-Graduação</option>
+                  <option value="mestrado">Mestrado</option>
+                  <option value="doutorado">Doutorado</option>
+                </StyledSelect>
+              </Label>
+              <Label>
+                Observações:
+                <StyleTextarea name="comments" value={formData.comments} onChange={handleChange} />
+              </Label>
+              <Label>
+                Arquivo:
+                <StyleInput 
+                  type="file" 
+                  name="resumeFile" 
+                  onChange={handleFileChange} />
+              </Label>
+              <FormButton 
+                type="submit">Cadastrar</FormButton>
+            </Form>
+          </>
+        ) : 
+        (
+          <>
+            <Title>Currículo cadastardo com sucesso!</Title>
+          </>
+        )}
+        
       </Container>
     );
 };
