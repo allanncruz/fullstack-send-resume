@@ -98,7 +98,7 @@ const ResumeForm: React.FC = () => {
         ) : 
         (
           <>
-            <Title>Currículo cadastardo com sucesso!</Title>
+            <Title>Currículo cadastrado com sucesso!</Title>
             <ButtonsArea>
               <Button light onClick={() => navigate(0)}>Voltar</Button>
               <Button primary onClick={() => navigate('/resumes')}>Currículos cadastrados</Button>

@@ -23,13 +23,12 @@ const ResumesList: React.FC = () => {
     "E-mail",
     "Telefone",
     "Cargo",
-    "Escolaridade",
-    "Arquivo"
+    "Escolaridade"
   ]
 
   return (
     <Container>
-      <Title>Currículos cadastardos</Title>
+      <Title>Currículos cadastrados</Title>
       <Table>
         <Thead>
           <Tr>
@@ -46,7 +45,6 @@ const ResumesList: React.FC = () => {
               <Td>{resume.phone}</Td>
               <Td>{resume.desired_position}</Td>
               <Td>{resume.education}</Td>
-              <Td>{resume.resume_file}</Td>
             </Tr>
           ))}
         </Tbody>
