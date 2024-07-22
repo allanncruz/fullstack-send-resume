@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Title, Container, Table, Thead, Tr, Th, Tbody, Td } from './style';
 
 interface Resume {
   id: number;
@@ -26,24 +27,40 @@ const ResumesList: React.FC = () => {
       });
   }, []);
 
+  const dataHeader = [
+    "Nome",
+    "E-mail",
+    "Telefone",
+    "Cargo",
+    "Escolaridade",
+    "Arquivo"
+  ]
+
   return (
-    <div>
-      <h1>Resumes List</h1>
-      <ul>
-        {resumes.map(resume => (
-          <li key={resume.id}>
-            <p>Name: {resume.name}</p>
-            <p>Email: {resume.email}</p>
-            <p>Phone: {resume.phone}</p>
-            <p>Desired Position: {resume.desired_position}</p>
-            <p>Education: {resume.education}</p>
-            <p>Comments: {resume.comments}</p>
-            <p>Resume File: {resume.resume_file}</p>
-            <p>Submitted At: {resume.submitted_at}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <Title>Currículos cadastardos</Title>
+      <Table>
+        <Thead>
+          <Tr>
+            {dataHeader?.map(item => (
+              <Th key={item}>{item}</Th>
+            ))}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {resumes.map(resume => (
+            <Tr key={resume.id}>
+              <Td>{resume.name}</Td>
+              <Td>{resume.email}</Td>
+              <Td>{resume.phone}</Td>
+              <Td>{resume.desired_position}</Td>
+              <Td>{resume.education}</Td>
+              <Td>{resume.resume_file}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </Container>
   );
 }
 

@@ -7,6 +7,12 @@ export const Container = styled.header`
   margin: 0 auto;
 `;
 
+export const Title = styled.h1`
+  color: ${props => props.theme.colors.secondary};
+  font-size: 24px;
+  text-align: center;
+`
+
 export const Form = styled.form`
   padding: 10px;
 `

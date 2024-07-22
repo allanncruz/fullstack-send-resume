@@ -35,11 +35,6 @@ export default createGlobalStyle`
     }
   }
 
-  h1{
-    color: ${props => props.theme.colors.secondary};
-    font-size: 24px;
-  }
-
   p{
     color: ${props => props.theme.colors.secondary};
     margin-bottom: 10px;
