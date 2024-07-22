@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Title, Container, Table, Thead, Tr, Th, Tbody, Td } from './style';
+import { Resume } from '../../interfaces/types';
 
-interface Resume {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  desired_position: string;
-  education: string;
-  comments: string;
-  resume_file: string;
-  submitted_at: string;
-}
+
 
 const ResumesList: React.FC = () => {
   const [resumes, setResumes] = useState<Resume[]>([]);
