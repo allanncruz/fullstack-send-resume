@@ -12,101 +12,68 @@ import {
   ButtonsArea } from './style';
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IFormInput } from '../../interfaces/types';
 
 const ResumeForm: React.FC = () => {
   const [resumeSent, setResumeSent] = useState(false);
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    desiredPosition: '',
-    education: '',
-    comments: '',
-    resumeFile: null as File | null
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = data => {
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('phone', data.phone);
+    formData.append('desiredPosition', data.desiredPosition);
+    formData.append('education', data.education);
+    formData.append('comments', data.comments);
+    if (data.resumeFile[0]) {
+      formData.append('resumeFile', data.resumeFile[0]);
+    }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    setFormData(prevState => ({ ...prevState, resumeFile: file }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      const data = new FormData();
-      data.append('name', formData.name);
-      data.append('email', formData.email);
-      data.append('phone', formData.phone);
-      data.append('desiredPosition', formData.desiredPosition);
-      data.append('education', formData.education);
-      data.append('comments', formData.comments);
-      if (formData.resumeFile) {
-        data.append('resumeFile', formData.resumeFile);
+    axios.post('/api/submit', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-
-      try {
-          const response = await axios.post('/api/submit', data, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-          console.log(response.data);
-          setResumeSent(true)
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    })
+    .then(response => {
+      console.log('Resume submitted successfully:', response.data);
+      setResumeSent(true)
+    })
+    .catch(error => {
+      console.error('There was an error submitting the resume!', error);
+    });
+  };
     
     return (
       <Container>
         {!resumeSent ? (
           <>
             <Title>Cadastrar currículo</Title>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <Label>
                 Nome:
-                <StyleInput 
-                  type="text" 
-                  name="name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  required />
+                <StyleInput type="text" {...register('name', { required: true })} />
+                {errors.name && <span>This field is required</span>}
               </Label>
               <Label>
                 E-mail:
-                <StyleInput 
-                  type="email" 
-                  name="email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  required />
+                <StyleInput type="email" {...register('email', { required: true })} />
+                {errors.email && <span>This field is required</span>}
               </Label>
               <Label>
                 Telefone:
-                <StyleInput 
-                  type="tel" 
-                  name="phone" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  required />
+                <StyleInput type="tel" {...register('phone', { required: true })} />
+                {errors.phone && <span>This field is required</span>}
               </Label>
               <Label>
                 Cargo Desejado:
-                <StyleInput 
-                  type="text" 
-                  name="desiredPosition" 
-                  value={formData.desiredPosition} 
-                  onChange={handleChange} 
-                  required />
+                <StyleInput {...register('desiredPosition', { required: true })} />
+                {errors.desiredPosition && <span>This field is required</span>}
               </Label>
               <Label>
                 Escolaridade:
-                <StyledSelect name="education" value={formData.education} onChange={handleChange} required>
+                <StyledSelect {...register('education', { required: true })}>
                   <option value="">Selecione</option>
                   <option value="ensino_medio">Ensino Médio</option>
                   <option value="graduacao">Graduação</option>
@@ -114,17 +81,15 @@ const ResumeForm: React.FC = () => {
                   <option value="mestrado">Mestrado</option>
                   <option value="doutorado">Doutorado</option>
                 </StyledSelect>
+                {errors.education && <span>This field is required</span>}
               </Label>
               <Label>
                 Observações:
-                <StyleTextarea name="comments" value={formData.comments} onChange={handleChange} />
+                <StyleTextarea {...register('comments')} />
               </Label>
               <Label>
                 Arquivo:
-                <StyleInput 
-                  type="file" 
-                  name="resumeFile" 
-                  onChange={handleFileChange} />
+                <StyleInput type="file" {...register('resumeFile')} />
               </Label>
               <FormButton 
                 type="submit">Cadastrar</FormButton>

@@ -19,3 +19,13 @@ export interface Resume {
   resume_file: string;
   submitted_at: string;
 }
+
+export interface IFormInput {
+  name: string;
+  email: string;
+  phone: string;
+  desiredPosition: string;
+  education: string;
+  comments: string;
+  resumeFile: FileList;
+}
