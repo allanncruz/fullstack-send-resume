@@ -12,11 +12,9 @@ export const Title = styled.h1`
   font-size: 24px;
   text-align: center;
 `
-
 export const Form = styled.form`
   padding: 10px;
 `
-
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -24,8 +22,6 @@ export const Label = styled.label`
   margin: 20px 0;
   color: ${props => props.theme.colors.secondary};
 `
-
-
 export const StyleInput = styled.input`
   padding: 8px;
   font-size: 16px;
@@ -38,6 +34,7 @@ export const StyleInput = styled.input`
     outline: none;
   }
 `;
+
 export const StyledSelect = styled.select`
   padding: 8px;
   font-size: 16px;
