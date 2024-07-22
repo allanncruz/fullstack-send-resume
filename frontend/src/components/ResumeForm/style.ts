@@ -21,6 +21,10 @@ export const Label = styled.label`
   font-size: 12px;
   margin: 20px 0;
   color: ${props => props.theme.colors.secondary};
+
+  span {
+    color: ${props => props.theme.colors.danger}
+  }
 `
 export const StyleInput = styled.input`
   padding: 8px;
@@ -73,7 +77,6 @@ export const FormButton = styled.button`
     opacity: .9;
   }
 `;
-
 
 export const ButtonsArea = styled.div`
   display: flex;

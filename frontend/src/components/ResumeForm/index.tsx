@@ -54,22 +54,22 @@ const ResumeForm: React.FC = () => {
               <Label>
                 Nome:
                 <StyleInput type="text" {...register('name', { required: true })} />
-                {errors.name && <span>This field is required</span>}
+                {errors.name && <span>Campo Nome é obrigatório</span>}
               </Label>
               <Label>
                 E-mail:
                 <StyleInput type="email" {...register('email', { required: true })} />
-                {errors.email && <span>This field is required</span>}
+                {errors.email && <span>Campo E-mail é obrigatório</span>}
               </Label>
               <Label>
                 Telefone:
                 <StyleInput type="tel" {...register('phone', { required: true })} />
-                {errors.phone && <span>This field is required</span>}
+                {errors.phone && <span>Campo Telefone é obrigatório</span>}
               </Label>
               <Label>
                 Cargo Desejado:
                 <StyleInput {...register('desiredPosition', { required: true })} />
-                {errors.desiredPosition && <span>This field is required</span>}
+                {errors.desiredPosition && <span>Campo Cargo Desejado é obrigatório</span>}
               </Label>
               <Label>
                 Escolaridade:
@@ -81,15 +81,28 @@ const ResumeForm: React.FC = () => {
                   <option value="mestrado">Mestrado</option>
                   <option value="doutorado">Doutorado</option>
                 </StyledSelect>
-                {errors.education && <span>This field is required</span>}
+                {errors.education && <span>Campo Escolaridade é obrigatório</span>}
               </Label>
               <Label>
                 Observações:
                 <StyleTextarea {...register('comments')} />
               </Label>
               <Label>
-                Arquivo:
-                <StyleInput type="file" {...register('resumeFile')} />
+                Anexar currículo (doc, .docx ou .pdf):
+                <StyleInput 
+                  type="file" 
+                  {...register('resumeFile', {
+                  required: true,
+                  validate: {
+                    acceptedFormats: (files) => [
+                      'application/msword', 
+                      'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                      'application/pdf'].includes(files[0]?.type) || 'Formato de arquivo inválido. ',
+                    lessThan1MB: (files) => files[0]?.size < 1048576 || 'O tamanho do arquivo deve ser inferior a 1 MB'
+                  }
+                })} 
+                />
+                {errors.resumeFile && <span>{errors.resumeFile.message}</span>}
               </Label>
               <FormButton 
                 type="submit">Cadastrar</FormButton>
