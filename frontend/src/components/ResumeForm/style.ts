@@ -73,3 +73,10 @@ export const FormButton = styled.button`
     opacity: .9;
   }
 `;
+
+
+export const ButtonsArea = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 ;
+`

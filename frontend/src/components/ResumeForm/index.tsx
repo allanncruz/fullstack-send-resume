@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, Form, FormButton, Label, StyledSelect, StyleInput, StyleTextarea, Title } from './style';
+import { 
+  Container, 
+  Form, 
+  FormButton, 
+  Label, 
+  StyledSelect, 
+  StyleInput, 
+  StyleTextarea, 
+  Title, 
+  ButtonsArea } from './style';
+import { Button } from '../Button';
+import { useNavigate } from 'react-router-dom';
 
 const ResumeForm: React.FC = () => {
   const [resumeSent, setResumeSent] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +61,7 @@ const ResumeForm: React.FC = () => {
         console.error(error);
       }
     };
-
+    
     return (
       <Container>
         {!resumeSent ? (
@@ -122,6 +134,10 @@ const ResumeForm: React.FC = () => {
         (
           <>
             <Title>Currículo cadastardo com sucesso!</Title>
+            <ButtonsArea>
+              <Button light onClick={() => navigate(0)}>Voltar</Button>
+              <Button primary onClick={() => navigate('/resumes')}>Currículos cadastrados</Button>
+            </ButtonsArea>
           </>
         )}
         
