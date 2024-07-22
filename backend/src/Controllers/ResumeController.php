@@ -33,4 +33,14 @@ class ResumeController
         $response->getBody()->write(json_encode(['message' => 'Resume submitted successfully']));
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    public function listResumes(Request $request, Response $response, array $args): Response
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+        $queryBuilder->select('*')->from('resumes');
+        $resumes = $queryBuilder->execute()->fetchAllAssociative();
+
+        $response->getBody()->write(json_encode($resumes));
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 }
