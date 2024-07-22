@@ -21,6 +21,10 @@ export default createGlobalStyle`
     height: 100%;
   }
 
+  main {
+    margin: 50px 0;
+  }
+
   
   a{
     text-decoration: none;
@@ -29,6 +33,11 @@ export default createGlobalStyle`
     &:hover {
       color: ${props => props.theme.colors.primary};
     }
+  }
+
+  h1{
+    color: ${props => props.theme.colors.secondary};
+    font-size: 24px;
   }
 
   p{

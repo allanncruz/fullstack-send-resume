@@ -16,6 +16,7 @@ export const Label = styled.label`
   flex-direction: column;
   font-size: 12px;
   margin: 20px 0;
+  color: ${props => props.theme.colors.secondary};
 `
 
 

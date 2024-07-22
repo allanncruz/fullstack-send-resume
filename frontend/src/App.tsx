@@ -12,11 +12,13 @@ function App() {
       <ThemeProvider theme={colors}>
         <BrowserRouter>
           <GlobalStyles />
-          <Header />
-          <Routes>
-            <Route path="/" element={<ResumeForm />} />
-            <Route path="/resumes" element={<ResumesList />} />
-          </Routes>
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<ResumeForm />} />
+                <Route path="/resumes" element={<ResumesList />} />
+              </Routes>
+            </main>
         </BrowserRouter>
       </ThemeProvider>
     </div>
