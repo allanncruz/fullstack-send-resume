@@ -28,8 +28,6 @@ const ResumesList: React.FC = () => {
     "Escolaridade"
   ]
 
-  console.log(resumes.length)
-
   return (
     <Container>
       <Title>Currículos cadastrados</Title>

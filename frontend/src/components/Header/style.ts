@@ -21,10 +21,22 @@ export const Brand = styled.div`
 	svg {
     border-radius: 4px;
   }
+
+  @media(max-width: 720px){
+    margin-right: 20px;
+
+    img {
+      width: 100px;
+    }
+  }
 `;
 
 
 export const NavLink = styled(Link)`
   margin: 0 10px;
   font-size: 14px;
+
+  @media(max-width: 720px){
+    font-size: 12px;
+  }
 `;
