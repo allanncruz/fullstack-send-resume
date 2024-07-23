@@ -11,14 +11,14 @@ import {
   Title, 
   ButtonsArea } from './style';
 import { Button } from '../Button';
-import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormInput } from '../../interfaces/types';
+import { useNavigate } from 'react-router-dom';
 
 const ResumeForm: React.FC = () => {
   const [resumeSent, setResumeSent] = useState(false);
-  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const formData = new FormData();
     formData.append('name', data.name);
