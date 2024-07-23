@@ -45,3 +45,13 @@ export const Tbody = styled.tbody`
 export const Td = styled.td`
   height: 20px;
 `
+
+export const EmptyBox = styled.div`
+  text-align: center;
+  margin: 50px 0;
+
+  img {
+    margin: 60px auto;
+    display: block;
+  }
+`

@@ -9,11 +9,13 @@ import {
   StyleInput, 
   StyleTextarea, 
   Title, 
-  ButtonsArea } from './style';
+  ButtonsArea, 
+  ConfirmedBox} from './style';
 import { Button } from '../Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormInput } from '../../interfaces/types';
 import { useNavigate } from 'react-router-dom';
+import ConfirmedImg from "../../assets/confirmed.png";
 
 const ResumeForm: React.FC = () => {
   const [resumeSent, setResumeSent] = useState(false);
@@ -110,13 +112,14 @@ const ResumeForm: React.FC = () => {
           </>
         ) : 
         (
-          <>
+          <ConfirmedBox>
             <Title>Currículo cadastrado com sucesso!</Title>
+            <img src={ConfirmedImg} alt="Parece que não há nada por aqui :(" />
             <ButtonsArea>
               <Button light onClick={() => navigate(0)}>Voltar</Button>
               <Button primary onClick={() => navigate('/resumes')}>Currículos cadastrados</Button>
             </ButtonsArea>
-          </>
+          </ConfirmedBox>
         )}
         
       </Container>

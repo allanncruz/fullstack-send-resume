@@ -83,3 +83,10 @@ export const ButtonsArea = styled.div`
   justify-content: center;
   margin: 20px 0 ;
 `
+
+export const ConfirmedBox = styled.div`
+  img {
+    margin: 60px auto;
+    display: block;
+  }
+`
