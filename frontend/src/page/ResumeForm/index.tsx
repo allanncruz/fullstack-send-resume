@@ -11,7 +11,7 @@ import {
   Title, 
   ButtonsArea, 
   ConfirmedBox} from './style';
-import { Button } from '../Button';
+import { Button } from '../../components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormInput } from '../../interfaces/types';
 import { useNavigate } from 'react-router-dom';
