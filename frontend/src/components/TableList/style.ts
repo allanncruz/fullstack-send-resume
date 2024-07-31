@@ -18,6 +18,15 @@ export const Thead = styled.thead`
 
 export const Tr = styled.tr`
   height: 40px;
+
+  @media(max-width: 720px){
+    td:nth-child(3),
+    td:nth-child(5),
+    th:nth-child(3),
+    th:nth-child(5){
+      display: none;
+    }
+  }
 `
 
 export const Th = styled.th`
