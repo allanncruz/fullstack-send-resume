@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Title } from "./style";
 import { IResumes } from "../../interfaces/types";
 import axios from "axios";
-import TableList from "../../components/ResumesList";
+import TableList from "../../components/TableList";
 import Loading from "../../components/Loading";
 
 const ResumeList = () => {

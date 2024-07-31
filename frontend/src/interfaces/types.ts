@@ -34,3 +34,8 @@ export interface ITableList {
   body: IResumes[];
   header: Array<String>;
 }
+
+export interface PhoneInputProps {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}

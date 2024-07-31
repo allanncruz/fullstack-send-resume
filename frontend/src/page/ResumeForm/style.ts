@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { InputMask } from '@react-input/mask';
 
 export const Container = styled.header`
 	padding: 15px 20px;
@@ -27,6 +28,19 @@ export const Label = styled.label`
   }
 `
 export const StyleInput = styled.input`
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid ${props => props.theme.colors.primaryLight};
+  border-radius: 4px;
+  color: ${props => props.theme.colors.black};
+
+  &:focus {
+    border-color: ${props => props.theme.colors.primary};
+    outline: none;
+  }
+`;
+
+export const StyleInputMask = styled(InputMask)`
   padding: 8px;
   font-size: 16px;
   border: 1px solid ${props => props.theme.colors.primaryLight};
