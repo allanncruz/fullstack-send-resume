@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
-`;
-
-
 export const Title = styled.h1`
   color: ${props => props.theme.colors.primary};
   font-size: 24px;
@@ -25,6 +18,15 @@ export const Thead = styled.thead`
 
 export const Tr = styled.tr`
   height: 40px;
+
+  @media(max-width: 720px){
+    td:nth-child(3),
+    td:nth-child(5),
+    th:nth-child(3),
+    th:nth-child(5){
+      display: none;
+    }
+  }
 `
 
 export const Th = styled.th`
@@ -44,4 +46,14 @@ export const Tbody = styled.tbody`
 
 export const Td = styled.td`
   height: 20px;
+`
+
+export const EmptyBox = styled.div`
+  text-align: center;
+  margin: 50px 0;
+
+  img {
+    margin: 60px auto;
+    display: block;
+  }
 `

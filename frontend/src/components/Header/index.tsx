@@ -15,7 +15,7 @@ export const Header = () => {
             Cadastrar currículo
           </NavLink>
           <NavLink to={'/resumes'}>
-            Currículos cadastardos
+            Currículos cadastrados
           </NavLink>
         </Nav>
       </Container>
