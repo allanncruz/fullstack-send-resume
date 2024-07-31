@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
 import { Container, Title } from "./style";
-import { Resume } from "../../interfaces/types";
+import { IResumes } from "../../interfaces/types";
 import axios from "axios";
 import TableList from "../../components/ResumesList";
+import Loading from "../../components/Loading";
 
 const ResumeList = () => {
-  const [resumes, setResumes] = useState<Resume[]>([]);
+  const [resumes, setResumes] = useState<IResumes[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true)
+
     axios.get('/api/resumes')
       .then(response => {
         setResumes(response.data);
+        setIsLoading(false);
       })
       .catch(error => {
         console.error('There was an error fetching the resumes!', error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -28,9 +34,13 @@ const ResumeList = () => {
   return (
     <Container>
       <Title>Currículos cadastrados</Title>
-      <TableList
-        header={dataHeader}
-        body={resumes} />
+      {!isLoading ? (
+        <TableList
+          header={dataHeader}
+          body={resumes} />
+        ) : (
+          <Loading />
+      )}
     </Container>
   );
 }

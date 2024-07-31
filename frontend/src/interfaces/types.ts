@@ -1,4 +1,4 @@
-export interface ButtonProps {
+export interface IButton {
   primary?: boolean;
   secondary?: boolean;
   light?: boolean;
@@ -8,7 +8,7 @@ export interface ButtonProps {
   index?: number
 }
 
-export interface Resume {
+export interface IResumes {
   id: number;
   name: string;
   email: string;
@@ -28,4 +28,9 @@ export interface IFormInput {
   education: string;
   comments: string;
   resumeFile: FileList;
+}
+
+export interface ITableList {
+  body: IResumes[];
+  header: Array<String>;
 }

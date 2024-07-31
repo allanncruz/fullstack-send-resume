@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonProps } from '../../interfaces/types';
+import { IButton } from '../../interfaces/types';
 
 export const getBackgroundColor = (props: any) => {
   if (props.primary) {
@@ -12,7 +12,7 @@ export const getBackgroundColor = (props: any) => {
   return 'defaultColor';
 };
 
-export const StyledButton = styled.button<ButtonProps>`
+export const StyledButton = styled.button<IButton>`
   background-color: ${props => getBackgroundColor(props)};
   color: ${props => (props.primary ? '#fff' : props.theme.colors.primary)};
   padding: 0.55em 1.2em;

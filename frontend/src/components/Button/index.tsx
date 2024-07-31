@@ -1,4 +1,4 @@
-  import { ButtonProps } from '../../interfaces/types';
+  import { IButton } from '../../interfaces/types';
 import { StyledButton } from './style';
 
 export const Button = ({ 
@@ -8,7 +8,7 @@ export const Button = ({
   light, 
   onClick, 
   className, 
-  index }: ButtonProps) => {
+  index }: IButton) => {
   return (
     <StyledButton 
       data-cy={`button-${index}`} 

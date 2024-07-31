@@ -1,18 +1,12 @@
 import { Table, Thead, Tr, Th, Tbody, Td, EmptyBox } from './style';
-import { Resume } from '../../interfaces/types';
+import { ITableList } from '../../interfaces/types';
 import EmptyImg from "../../assets/empty.png";
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
 
-interface ITableList {
-  body: Resume[];
-  header: Array<String>;
-}
 
 const TableList = ({ body, header}: ITableList) => {
   const navigate = useNavigate();
-
-  console.log(header)
 
   return (
     <>
